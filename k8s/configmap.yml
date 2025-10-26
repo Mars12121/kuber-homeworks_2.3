@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deployment-service
+  namespace: dz2-3
+spec:
+  type: NodePort
+  ports:
+    - name: nginx
+      port:  80
+      nodePort: 32000
+      protocol: TCP
+      targetPort: 80
+    - name: mt
+      port:  8080
+      nodePort: 32001
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: main
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+  namespace: dz2-3
+data:
+  HTTP-PORT: "8080"
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Welcome!</title>
+    </head>
+    <body>
+      <h1>Hi K8S!</h1>
+    </body>
+    </html>

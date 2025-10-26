@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: https-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  tls:
+  - hosts:
+    - myapp.netology.local
+    secretName: tls-secret
+  rules:
+  - host: myapp.netology.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-https
+            port:
+              number: 443

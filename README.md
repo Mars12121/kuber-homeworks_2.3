@@ -328,7 +328,7 @@ openssl x509 -req -in developer.csr -CA {CA серт вашего кластер
 - Скриншот проверки прав (`kubectl get pods --as=developer`)
 
 ### Ответ
-1. Включите RBAC в microk8s
+1. Включаем RBAC в microk8s
 ![alt text](https://github.com/Mars12121/kuber-homeworks_2.3/blob/main/img/7.png)
 
 
